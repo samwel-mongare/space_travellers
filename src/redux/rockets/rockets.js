@@ -17,7 +17,9 @@ const reducer = (state = initialState, action) => {
     case ADD_ROCKETS:
       return [...action.payload];
     case ADD_ROCKET:
-      return [...state, action.payload];
+      return [...state].map((rocket) => (rocket.id === action.payload.id
+        ? { ...rocket, reserved: action.payload.reserved }
+        : rocket));
     default:
       return state;
   }
