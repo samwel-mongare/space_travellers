@@ -5,21 +5,21 @@ import Missions from './components/pages/Missions';
 
 const App = () => (
   <div className="spaceTravellers">
-      <Navbar />
-      <Routes>
-        <Route
-          path="/Missions"
-          element={
-            <Missions />
+    <Navbar />
+    <Routes>
+      <Route
+        path="/Missions"
+        element={
+          <Missions />
     }
-        />
-        <Route
-          path="/Profile"
-          element={
-            <Profile />
+      />
+      <Route
+        path="/Profile"
+        element={
+          <Profile />
     }
-        />
-      </Routes>
+      />
+    </Routes>
   </div>
 );
 
