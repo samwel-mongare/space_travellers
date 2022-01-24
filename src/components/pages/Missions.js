@@ -1,6 +1,8 @@
+import MissionList from '../MissionList';
+
 const Missions = () => (
   <div>
-    <h1>Hello from Missions</h1>
+    <MissionList />
   </div>
 );
 

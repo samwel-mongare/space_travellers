@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMultiRockets } from '../redux/rockets/rockets';
-import SpaceXAPI from '../services/spaceXAPI';
+import { SpaceXAPI } from '../services/spaceXAPI';
 
 export default async function useDeliveredRockets() {
   const dispatch = useDispatch();
@@ -16,7 +16,6 @@ export default async function useDeliveredRockets() {
     setStatus('loading');
     const data = await spaceXAPI.getRockets();
     setStatus('loaded');
-    console.log({ data, rocketList });
     dispatch(addMultiRockets(data));
 
     // console.log(rocketList);
