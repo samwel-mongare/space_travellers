@@ -1,28 +1,26 @@
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { addMultiRockets } from '../redux/rockets/rockets';
 import SpaceXAPI from '../services/spaceXAPI';
 
-const localCache = {};
-
-export default function useDeliveredRockets(dispatch) {
-  const [rocketList, setRocketList] = useState([]);
+export default async function useDeliveredRockets() {
+  const dispatch = useDispatch();
+  const rocketList = useSelector((state) => state.rocketReducer);
   const [status, setStatus] = useState('unloaded');
   const spaceXAPI = new SpaceXAPI();
 
-  useEffect(() => {
-    async function requestRocketList() {
-      setRocketList([]);
-      setStatus('loading');
-      await spaceXAPI.getRockets()
-        .then((data) => {
-          localCache.rockets = data || [];
-          setRocketList(localCache.rockets);
-          setStatus('loaded');
-          dispatch(addMultiRockets(localCache.rockets));
-        });
+  useEffect(async () => {
+    if (Object.values(rocketList).length > 0) {
+      return [rocketList, status];
     }
+    setStatus('loading');
+    const data = await spaceXAPI.getRockets();
+    setStatus('loaded');
+    console.log({ data, rocketList });
+    dispatch(addMultiRockets(data));
 
-    requestRocketList();
+    // console.log(rocketList);
+    return [rocketList, status];
   }, []);
 
   return [rocketList, status];

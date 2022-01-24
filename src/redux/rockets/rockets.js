@@ -15,7 +15,7 @@ export const addMultiRockets = (payload) => ({
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ROCKETS:
-      return [...state, ...action.payload];
+      return [...action.payload];
     case ADD_ROCKET:
       return [...state, action.payload];
     default:
