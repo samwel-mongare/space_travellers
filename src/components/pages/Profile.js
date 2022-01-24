@@ -11,11 +11,7 @@ const Profile = () => {
       <div className="flex-1 mx-4">
         <h2 className="text-2xl font-semibold mb-4">My Rockets</h2>
 
-        {rocketList.map((rocket) => (rocket.reserved === true
-          ? (
-            <div className="border-2 mr-12 p-4">{rocket.rocket_name}</div>
-          )
-          : null))}
+        {rocketList.map((rocket) => (rocket.reserved && <div className="border-2 mr-12 p-4">{rocket.rocket_name}</div>))}
 
       </div>
 

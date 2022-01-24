@@ -22,9 +22,7 @@ export default function RocketItem({
       <div>
         <h2 className="font-semibold text-3xl mb-4">{rocketName}</h2>
         {
-          reserved === true
-            ? <span className="bg-cyan-500 rounded px-[5px] text-white inline-block mr-3">Reserved</span>
-            : ''
+          reserved && <span className="bg-cyan-500 rounded px-[5px] text-white inline-block mr-3">Reserved</span>
         }
         <p className="text-xl inline">{description}</p>
         {
