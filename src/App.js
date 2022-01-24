@@ -1,12 +1,36 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Rockets from './components/pages/Rockets';
+import Profile from './components/pages/Profile';
+import Missions from './components/pages/Missions';
 
-function App() {
-  return (
-    <div className="App">
-      <Navbar> </Navbar>
-      <h1>let&apos;s get started Partner..haha</h1>
-    </div>
-  );
-}
+const App = () => (
+  <div className="spaceTravellers">
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/Missions"
+          element={
+            <Missions />
+    }
+        />
+        <Route
+          path="/Profile"
+          element={
+            <Profile />
+    }
+        />
+        <Route
+          path="/"
+          element={
+            <Rockets />
+    }
+        />
+      </Routes>
+    </BrowserRouter>
+
+  </div>
+);
 
 export default App;
