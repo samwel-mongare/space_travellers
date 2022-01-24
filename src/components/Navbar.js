@@ -4,6 +4,11 @@ import logo from '../assets/planet.png';
 export default function Navbar() {
   const links = [
     {
+      id: 0,
+      path: '/',
+      text: 'Rockets',
+    },
+    {
       id: 1,
       path: '/Missions',
       text: 'Missions',
