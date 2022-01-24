@@ -7,8 +7,7 @@ export default function Rockets() {
   useDeliveredRockets();
 
   return (
-    <h2>
-      {' '}
+    <main className="m-8">
       {rocketList.map((rocket) => (
         <RocketItem
           key={rocket.id}
@@ -18,6 +17,6 @@ export default function Rockets() {
           flickrImages={rocket.flickr_images}
         />
       ))}
-    </h2>
+    </main>
   );
 }
