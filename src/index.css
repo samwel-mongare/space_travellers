@@ -2,3 +2,13 @@ body {
   margin: 0;
   padding: 0;
 }
+
+a {
+  text-decoration: none;
+}
+
+.active {
+  color: red;
+  text-decoration: underline;
+  font-weight: 500;
+}
