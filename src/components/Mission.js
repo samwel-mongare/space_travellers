@@ -2,10 +2,6 @@ import { useDispatch } from 'react-redux';
 import { memberStatusFunc, memberActivated } from '../redux/Missions/Missions';
 
 const Mission = ((props) => {
-//   const [members, newMember] = useState({
-//     member: true,
-//   });
-
   const dispatch = useDispatch();
 
   const onClick = ((e) => {
