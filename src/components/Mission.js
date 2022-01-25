@@ -1,27 +1,22 @@
-import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { memberStatusFunc } from '../redux/Missions/Missions';
+import { memberStatusFunc, memberActivated } from '../redux/Missions/Missions';
 
 const Mission = ((props) => {
-  const [members, newMember] = useState({
-    member: true,
-  });
+//   const [members, newMember] = useState({
+//     member: true,
+//   });
 
   const dispatch = useDispatch();
-  const memberStatus = members.member;
 
   const onClick = ((e) => {
     const missionId = e.target.parentElement.id;
     if (e.target.value === 'Join') {
-      newMember({
-        member: true,
-      });
+      const activeMember = true;
+      dispatch(memberStatusFunc({ missionId, activeMember }));
     } else if (e.target.value === 'leave') {
-      newMember({
-        member: false,
-      });
+      const notActive = false;
+      dispatch(memberActivated({ missionId, notActive }));
     }
-    dispatch(memberStatusFunc({ missionId, memberStatus }));
   });
 
   const data = props;
