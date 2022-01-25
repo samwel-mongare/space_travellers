@@ -33,6 +33,7 @@ const MissionList = (() => {
             key={data.mission_id}
             name={data.mission_name}
             description={data.description}
+            memberActive={data.member}
             idx={data.mission_id}
           />
         ))}

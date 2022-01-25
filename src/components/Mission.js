@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { memberStatusFunc } from '../redux/Missions/Missions';
 
 const Mission = ((props) => {
   const [members, newMember] = useState({
-    member: false,
+    member: true,
   });
 
+  const dispatch = useDispatch();
   const memberStatus = members.member;
 
   const onClick = ((e) => {
-    // console.log(e.target.value, e.target.parentElement.id);
+    const missionId = e.target.parentElement.id;
     if (e.target.value === 'Join') {
       newMember({
         member: true,
       });
-    } else {
+    } else if (e.target.value === 'leave') {
       newMember({
         member: false,
       });
     }
+    dispatch(memberStatusFunc({ missionId, memberStatus }));
   });
 
   const data = props;
@@ -29,37 +33,26 @@ const Mission = ((props) => {
       </td>
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-fit">
         {
-              memberStatus === false
+              data.memberActive === true
                 ? (
-                  <span className="bg-gray-300 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded
-      dark:bg-gray-500 dark:text-white"
-                  >
-                    Not a Member
-                  </span>
-                )
-                : (
                   <span className="bg-blue-400 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded
       dark:bg-blue-400 dark:text-white"
                   >
                     Active Member
                   </span>
                 )
+                : (
+                  <span className="bg-gray-300 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded
+      dark:bg-gray-500 dark:text-white"
+                  >
+                    Not a Member
+                  </span>
+                )
           }
       </td>
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap man-w-fit" id={data.idx}>
-        {memberStatus === false
+        {data.memberActive === true
           ? (
-            <button
-              className="bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border
-      border-gray-500 hover:border-transparent rounded"
-              type="button"
-              value="Join"
-              onClick={onClick}
-            >
-              Join Mission
-            </button>
-          )
-          : (
             <button
               className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border
       border-red-500 hover:border-transparent rounded"
@@ -68,6 +61,17 @@ const Mission = ((props) => {
               onClick={onClick}
             >
               Leave Mission
+            </button>
+          )
+          : (
+            <button
+              className="bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border
+      border-gray-500 hover:border-transparent rounded"
+              type="button"
+              value="Join"
+              onClick={onClick}
+            >
+              Join Mission
             </button>
           )}
       </td>
