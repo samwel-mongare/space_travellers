@@ -7,17 +7,18 @@ export default function Rockets() {
   useDeliveredRockets();
 
   return (
-    <h2>
-      {' '}
+    <main className="m-8">
       {rocketList.map((rocket) => (
         <RocketItem
           key={rocket.id}
+          id={rocket.id}
+          reserved={rocket.reserved}
           rocketName={rocket.rocket_name}
           description={rocket.description}
           rocketType={rocket.rocket_type}
           flickrImages={rocket.flickr_images}
         />
       ))}
-    </h2>
+    </main>
   );
 }
