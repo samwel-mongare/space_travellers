@@ -9,9 +9,7 @@ const MissionList = (() => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (missions.length === 0) {
-      dispatch(getMissions());
-    }
+    dispatch(getMissions());
   }, [dispatch]);
 
   return (
@@ -35,6 +33,7 @@ const MissionList = (() => {
             key={data.mission_id}
             name={data.mission_name}
             description={data.description}
+            idx={data.mission_id}
           />
         ))}
       </tbody>
