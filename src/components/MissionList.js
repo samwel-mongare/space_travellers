@@ -8,8 +8,12 @@ const MissionList = (() => {
   const missions = useSelector((state) => state.missionReducer.missions);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useEffect(async () => {
+    if (Object.values(missions).length > 0) {
+      return missions;
+    }
     dispatch(getMissions());
+    return missions;
   }, [dispatch]);
 
   return (
@@ -33,6 +37,8 @@ const MissionList = (() => {
             key={data.mission_id}
             name={data.mission_name}
             description={data.description}
+            memberActive={data.member}
+            idx={data.mission_id}
           />
         ))}
       </tbody>
