@@ -1,9 +1,9 @@
 import MissionList from '../MissionList';
 
 const Missions = () => (
-  <div>
+  <main>
     <MissionList />
-  </div>
+  </main>
 );
 
 export default Missions;
