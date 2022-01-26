@@ -5,10 +5,13 @@
 
 ## Project screenshot
 
-![screenshot](./app_screenshot.png)
+![screenshot](./screenRecorder.gif)
 
 Additional description about the project and its features.
 
+## [Live Demo](https://space-traveler-s-hub.netlify.app/)
+
+Space Travelers' Hub is now live! [Click here](https://space-traveler-s-hub.netlify.app/)
 ## Built With
 
 - HTML
