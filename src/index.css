@@ -1,0 +1,4 @@
+/* stylelint-disable no-missing-end-of-source-newline *//* stylelint-disable scss/at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
